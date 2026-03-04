@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: argocd
+  # This Application manages other Applications
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ras-km/argocd-app.git  # YOUR REPO
+    targetRevision: main
+    path: apps  # Directory containing all child apps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd  # Child apps are created in argocd namespace
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

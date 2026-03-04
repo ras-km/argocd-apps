@@ -3,6 +3,15 @@ kind: Application
 metadata:
   name: hello-world
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: hello=rkdockerhub420/hello-world-ui
+    argocd-image-updater.argoproj.io/hello.update-strategy: latest
+    argocd-image-updater.argoproj.io/hello.helm.image-name: image.repository
+    argocd-image-updater.argoproj.io/hello.helm.image-tag: image.tag
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/git-credentials-secret: git-creds
+
+
 spec:
   project: default
 
@@ -24,3 +33,5 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+
+  
