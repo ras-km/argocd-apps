@@ -7,7 +7,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/ras-km/argocd-app.git  # YOUR REPO
+    repoURL: https://github.com/ras-km/argocd-apps.git  # YOUR REPO
     targetRevision: main
     path: apps  # Directory containing all child apps
   destination:
